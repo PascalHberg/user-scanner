@@ -33,3 +33,14 @@ def test_result_update():
     
     assert result.username == "bob"
     assert result.site_name == "GitHub"
+    
+def test_result_status_labels():
+    """Prüfe ob Status-Labels richtig angezeigt werden"""
+    taken = Result.taken()
+    available = Result.available()
+    error = Result.error()
+    
+    # Für Username (is_email=False)
+    assert str(taken) == "Found"
+    assert str(available) == "Not Found"
+    assert str(error) == "Error"
